@@ -1,13 +1,16 @@
 package ru.geekbrains.main.site.at;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SearchTest extends Locators{
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class SearchTest extends Locators {
     @Test
-    void searchTest(){
+    public void searchTest() {
         /*Открываю стартовую страницу теста*/
         open(BASE_URL + "/courses");
         driver.manage().window().maximize();
@@ -24,21 +27,29 @@ public class SearchTest extends Locators{
 
         /*Выполняю проверку результатов найденых элементов по категориям*/
         result = Integer.parseInt(getText(professionsHeaderButton));
-        Assertions.assertTrue(result >= 2, "Результат поиска по категории 'Профессии' не соответствует");
+//        assertTrue(result >= 2, "Результат поиска по категории 'Профессии' не соответствует");
+        assertThat(result, lessThanOrEqualTo(2));
 
         result = Integer.parseInt(getText(courseHeaderButton));
-        Assertions.assertTrue(result > 15, "Результат поиска по категории 'Курсы' не соответствует");
+//        assertTrue(result > 15, "Результат поиска по категории 'Курсы' не соответствует");
+        assertThat(result, greaterThan(15));
 
         result = Integer.parseInt(getText(vebinarHeaderButton));
-        Assertions.assertTrue(180 < result && result < 300, "Результат поиска по категории 'Вебинары' не соответствует");
-
+//        assertTrue(180 < result && result < 300, "Результат поиска по категории 'Вебинары' не соответствует");
+        assertThat(result, allOf(
+               greaterThan(180),
+               lessThan(300)
+        ));
         result = Integer.parseInt(getText(blogHeaderButton));
-        Assertions.assertTrue(result > 300, "Результат поиска по категории 'Блог' не соответствует");
+//        assertTrue(result > 300, "Результат поиска по категории 'Блог' не соответствует");
+        assertThat(result, greaterThan(300));
 
         result = Integer.parseInt(getText(forumHeaderButton));
-        Assertions.assertTrue(result != 350, "Результат поиска по категории 'Форумы' не соответствует");
+//        assertTrue(result != 350, "Результат поиска по категории 'Форумы' не соответствует");
+        assertThat(result, not(equalTo(350)));
 
         result = Integer.parseInt(getText(testHeaderButton));
-        Assertions.assertTrue(result != 0, "Результат поиска по категории 'Тесты' не соответствует");
+//        assertTrue(result != 0, "Результат поиска по категории 'Тесты' не соответствует");
+        assertThat(result, not(equalTo(0)));
     }
 }
