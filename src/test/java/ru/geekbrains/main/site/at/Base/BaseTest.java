@@ -36,21 +36,7 @@ public abstract class BaseTest {
         driver.findElement(By.xpath("//div/div/button[2]")).click();
     }
 
-//    void IsHeaderPresent() {
-//        try {
-//            driver.findElement(By.id("top-menu"));
-//        } catch (NoSuchElementException e) {
-//            System.out.println("Header не найден");
-//        }
-//    }
-//
-//    void IsfooterPresent() {
-//        try {
-//            driver.findElement(By.className("site-footer"));
-//        } catch (NoSuchElementException e) {
-//            System.out.println("Foter не найден");
-//        }
-//    }
+
 
     String getText(By by) {
         IsElementPresent(by);
@@ -59,7 +45,7 @@ public abstract class BaseTest {
 
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
@@ -69,7 +55,7 @@ public abstract class BaseTest {
     }
 
     @AfterEach
-    void tearDown() {
+    public void tearDown() {
         driver.quit();
     }
 }
