@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.geekbrains.main.site.at.Base.BaseTest;
 import ru.geekbrains.main.site.at.pages.Page;
 
@@ -22,13 +25,14 @@ public class SearchTest extends BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(By.xpath("//div/div/button[2]")).click();
+
     }
 
     @ParameterizedTest
     @MethodSource("selectorGenerator")
-    public void searchFieldTest(String value, String selector) {
+    public void searchFieldTest(String selector) {
         new Page(driver)
-                .searchValue(value)
+                .searchValue("java")
                 .getSearchPageTab()
                 .shouldBeCorrectResult(selector);
     }
@@ -36,4 +40,5 @@ public class SearchTest extends BaseTest {
     public static Stream<String> selectorGenerator() {
         return Stream.of("Профессии", "Курсы", "Вебинары", "Блоги", "Форумы", "Тесты");
     }
+
 }

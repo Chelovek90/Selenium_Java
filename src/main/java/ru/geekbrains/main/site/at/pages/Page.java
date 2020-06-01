@@ -1,8 +1,11 @@
 package ru.geekbrains.main.site.at.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertEquals;
 
@@ -26,6 +29,9 @@ public class Page extends BasePage {
     @FindBy(className = "search-panel__submit")
     private WebElement searchStart;
 
+    @FindBy(css = "ul.search-page-tabs")
+    private WebElement searchTabHeader;
+
     private NavigationTab navigationTab;
     private SearchPageTab searchPageTab;
 
@@ -44,8 +50,13 @@ public class Page extends BasePage {
         searchOpenButton.click();
         searchFieldInput.sendKeys(value);
         searchStart.click();
+        WebElement pageLoad = (new WebDriverWait(driver, 20))
+                .until(ExpectedConditions.presenceOfElementLocated((By.cssSelector("ul.search-page-tabs"))));
+
         return this;
     }
+
+
 
     public NavigationTab getNavigationTab() {
         return navigationTab;

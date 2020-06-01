@@ -38,8 +38,7 @@ public class SearchPageTab extends BasePage{
     @FindBy(css = ".container > .search-page-tabs > .nav-tabs-item:nth-child(7) span")
     private WebElement resultTestTab;
 
-    @FindBy(css = "ul.search-page-tabs")
-    private WebElement searchTabHeader;
+
 
     public SearchPageTab(WebDriver driver) {
         super(driver);
@@ -47,8 +46,6 @@ public class SearchPageTab extends BasePage{
 
 
     public Page shouldBeCorrectResult (String selector) {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.presenceOfElementLocated((By) searchTabHeader));
 
 
         switch (selector) {
