@@ -1,9 +1,9 @@
 package ru.geekbrains.main.site.at;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.FindBy;
+import ru.geekbrains.main.site.at.Base.BaseTest;
 
-public class Locators extends BaseTest{
+public class Locators extends BaseTest {
     /*Локаторы панели навигации*/
     By careerNavItemButton = By.cssSelector("nav > a[href='/career']");
     By testNavItemButton = By.cssSelector("nav > a[href='/tests'");
