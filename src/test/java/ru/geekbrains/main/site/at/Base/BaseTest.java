@@ -15,34 +15,6 @@ public abstract class BaseTest {
     public WebDriver driver;
     public final String BASE_URL = "https://geekbrains.ru";
 
-    String header;
-    int result;
-
-    void IsElementPresent(By by) {
-        try {
-            driver.findElement(by);
-        } catch (NoSuchElementException e) {
-            System.out.println("Элемент" + by + "не найден");
-        }
-    }
-
-    void open(String link) {
-        driver.get(link);
-    }
-
-    void closeSell() {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//div/div/button[2]")).click();
-    }
-
-
-
-    String getText(By by) {
-        IsElementPresent(by);
-        return driver.findElement(by).getText();
-    }
-
-
     @BeforeEach
     public void setUp() {
         WebDriverManager.chromedriver().setup();

@@ -4,13 +4,6 @@ import org.openqa.selenium.By;
 import ru.geekbrains.main.site.at.Base.BaseTest;
 
 public class Locators extends BaseTest {
-    /*Локаторы панели навигации*/
-    By careerNavItemButton = By.cssSelector("nav > a[href='/career']");
-    By testNavItemButton = By.cssSelector("nav > a[href='/tests'");
-    By coursesNavItemButton = By.cssSelector("nav > a[href='/courses'");
-    By vebinarNavItemButton = By.cssSelector("nav > a[href='/events'");
-    By forumNavItemButton = By.cssSelector("nav > a[href='/topics'");
-    By blogNavItemButton = By.cssSelector("nav > a[href='/posts'");
 
     /*Локатор heder - footer*/
     By headerText = By.className("gb-header__title");
@@ -26,8 +19,5 @@ public class Locators extends BaseTest {
     By forumHeaderButton = By.cssSelector(".container > .search-page-tabs > .nav-tabs-item:nth-child(6) span");
     By testHeaderButton = By.cssSelector(".container > .search-page-tabs > .nav-tabs-item:nth-child(7) span");
 
-    /*Локаторы поисковой строки*/
-    By searchButton = By.cssSelector("#top-menu .show-search-form");
-    By searchInput = By.cssSelector("#top-menu .search-panel__search-field");
 
  }
