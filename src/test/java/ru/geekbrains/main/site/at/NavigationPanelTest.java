@@ -14,7 +14,6 @@ public class NavigationPanelTest extends BaseTest {
     @BeforeEach
     public void openPage () {
         driver.get(BASE_URL+ "/career");
-        driver.manage().window().maximize();
     }
 
     @ParameterizedTest
