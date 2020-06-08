@@ -1,5 +1,6 @@
 package ru.geekbrains.main.site.at;
 
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.geekbrains.main.site.at.Base.BaseTest;
@@ -8,6 +9,7 @@ import ru.geekbrains.main.site.at.pages.LoginPage;
 public class LoginPageTest extends BaseTest {
 
     @BeforeEach
+    @Step("Open '/login' page")
     public void openPage() {
         driver.get(BASE_URL + "/login");
     }
